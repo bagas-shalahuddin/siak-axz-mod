@@ -28,7 +28,7 @@ def war():
     common_matkul = ""
     chosen_matkul = ""
 
-    with open("./danar/credentials.txt", "r") as file:
+    with open("./bagas/credentials.txt", "r") as file:
         creds = []
         for line in file:
             creds.append(line.strip())
@@ -47,7 +47,7 @@ def war():
     print(f"Chosen matkul: {chosen_matkul}")
 
     matkul={}
-    with open("./danar/matkul.txt", "r") as file:
+    with open("./bagas/matkul.txt", "r") as file:
         for line in file:
             (code, name) = line.split(' ', 1)
             matkul[name] = code
