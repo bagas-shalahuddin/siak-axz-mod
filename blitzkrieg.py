@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
@@ -11,11 +12,12 @@ home_page = "https://academic.ui.ac.id/main/Welcome/Index"
 siak_page = "https://academic.ui.ac.id/main/CoursePlan/CoursePlanEdit"
 
 def war():
-    options = webdriver.ChromeOptions()
+    options = Options()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
-    driver = webdriver.Chrome('chromedriver.exe', options=options)
-
+    service = Service('chromedriver.exe')
+    driver = webdriver.Chrome(service=service, options=options)
+    
     # use line below if you want more refresh in shorter time, might impact login time
     # maybe useful when your faculty goes to war on the same time as other faculty
     # driver.set_page_load_timeout(5)
@@ -26,7 +28,7 @@ def war():
     common_matkul = ""
     chosen_matkul = ""
 
-    with open("credentials.txt", "r") as file:
+    with open("./danar/credentials.txt", "r") as file:
         creds = []
         for line in file:
             creds.append(line.strip())
@@ -45,9 +47,9 @@ def war():
     print(f"Chosen matkul: {chosen_matkul}")
 
     matkul={}
-    with open("matkul.txt", "r") as file:
+    with open("./danar/matkul.txt", "r") as file:
         for line in file:
-            (code, name) = line.split()
+            (code, name) = line.split(' ', 1)
             matkul[name] = code
 
     print("Matkul loaded!")

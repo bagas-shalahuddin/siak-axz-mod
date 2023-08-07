@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 import time
 
 """
@@ -16,7 +17,8 @@ features:
 # driver = webdriver.Chrome('./chromedriver', options=options)
 
 # ======= linux. put chromedriver on folder
-driver = webdriver.Chrome("./chromedriver")
+service = Service('chromedriver.exe')
+driver = webdriver.Chrome(service=service)
 
 login_url = "https://academic.ui.ac.id/main/Authentication/"
 homepage_url = "https://academic.ui.ac.id/main/Welcome/"
@@ -26,9 +28,9 @@ siak_url = "https://academic.ui.ac.id/main/CoursePlan/CoursePlanEdit"
 down_string = "Universitas Indonesia"
 matkul_code = {}
 
-with open("matkul.txt", "r") as file:
+with open("./danar/matkul.txt", "r") as file:
     for line in file:
-        (kelas, nama) = line.split()
+        (kelas, nama) = line.split(' ', 1)
         matkul_code[nama] = kelas
 
 # fill your login credentials here
@@ -38,7 +40,7 @@ display_name = "" # yang ditampilin di pojok kanan atas siak. ex: Galangkangin G
 common_matkul = "" # matkul yang dijamin ada pada pengisian IRS. Misalnya DDP atau Tennis (Substring sseperti Tenn tidak apa-apa)
 chosen_matkul = ""
 
-with open("credentials.txt", "r") as file:
+with open("./danar/credentials.txt", "r") as file:
     creds = []
     for line in  file:
         creds.append(line.strip())
