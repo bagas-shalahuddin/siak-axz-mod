@@ -28,7 +28,7 @@ siak_url = "https://academic.ui.ac.id/main/CoursePlan/CoursePlanEdit"
 down_string = "Universitas Indonesia"
 matkul_code = {}
 
-with open("./luky/matkul.txt", "r") as file:
+with open("./innaka/matkul.txt", "r") as file:
     for line in file:
         (kelas, nama) = line.split(' ', 1)
         matkul_code[nama] = kelas
@@ -36,11 +36,11 @@ with open("./luky/matkul.txt", "r") as file:
 # fill your login credentials here
 user = ""
 passw = ""
-display_name = "" # yang ditampilin di pojok kanan atas siak. ex: Galangkangin Gotera
+display_name = "" # yang ditampilin di pojok kanan atas siak.
 common_matkul = "" # matkul yang dijamin ada pada pengisian IRS. Misalnya DDP atau Tennis (Substring sseperti Tenn tidak apa-apa)
 chosen_matkul = ""
 
-with open("./luky/credentials.txt", "r") as file:
+with open("./innaka/credentials.txt", "r") as file:
     creds = []
     for line in  file:
         creds.append(line.strip())
