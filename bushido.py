@@ -28,7 +28,7 @@ siak_url = "https://academic.ui.ac.id/main/CoursePlan/CoursePlanEdit"
 down_string = "Universitas Indonesia"
 matkul_code = {}
 
-with open("./bagas/matkul.txt", "r") as file:
+with open("./natasha/matkul.txt", "r") as file:
     for line in file:
         (kelas, nama) = line.split(' ', 1)
         matkul_code[nama] = kelas
@@ -40,7 +40,7 @@ display_name = "" # yang ditampilin di pojok kanan atas siak.
 common_matkul = "" # matkul yang dijamin ada pada pengisian IRS. Misalnya DDP atau Tennis (Substring sseperti Tenn tidak apa-apa)
 chosen_matkul = ""
 
-with open("./bagas/credentials.txt", "r") as file:
+with open("./natasha/credentials.txt", "r") as file:
     creds = []
     for line in  file:
         creds.append(line.strip())
@@ -77,7 +77,7 @@ def war_page():
         # antisipasi salah masukkin kode
         try:
             radio_input = driver.find_element(By.XPATH, f"//input[@value='{kode}']")
-            if(not radio_input.is_selected()): 
+            if(not radio_input.is_selected()):
                 radio_input.click()
                 print(f"{name} dipilih! (kode: {kode})")
                 time.sleep(0.1)
