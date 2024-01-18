@@ -20,7 +20,7 @@ def war():
     
     # use line below if you want more refresh in shorter time, might impact login time
     # maybe useful when your faculty goes to war on the same time as other faculty
-    # driver.set_page_load_timeout(5)
+    driver.set_page_load_timeout(5)
 
     username = ""
     password = ""
@@ -28,7 +28,7 @@ def war():
     common_matkul = ""
     chosen_matkul = ""
 
-    with open("./natasha/credentials.txt", "r") as file:
+    with open("./luky/credentials.txt", "r") as file:
         creds = []
         for line in file:
             creds.append(line.strip())
@@ -47,7 +47,7 @@ def war():
     print(f"Chosen matkul: {chosen_matkul}")
 
     matkul={}
-    with open("./natasha/matkul.txt", "r") as file:
+    with open("./luky/matkul.txt", "r") as file:
         for line in file:
             (code, name) = line.split(' ', 1)
             matkul[name] = code
